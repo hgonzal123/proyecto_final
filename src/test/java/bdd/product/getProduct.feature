@@ -1,3 +1,4 @@
+@automation-api
 Feature: Listado de productos
 
   Background:
