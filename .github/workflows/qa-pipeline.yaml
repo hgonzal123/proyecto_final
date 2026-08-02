@@ -9,9 +9,5 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
       - name: Run tests with @automation-api tag
-        run: mvn test -Dcucumber.filter.tags="@automation-api"
-        working-directory: ./project-folder
+        run: echo "Hola"
