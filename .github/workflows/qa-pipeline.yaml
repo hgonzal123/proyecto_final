@@ -9,5 +9,14 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
       - name: Run tests with @automation-api tag
-        run: mvn clean test -Dkarate.tags=@login
+        run: mvn clean test -Dkarate.tags=@automation-api
