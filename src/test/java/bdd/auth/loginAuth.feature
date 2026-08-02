@@ -17,17 +17,18 @@ Feature: Logeo de usuarios
     Then status 200
     And match response.user contains { "email":"hgonzalez@gmail.com"}
     * def token = response.access_token
-    * print token
+    * print "Usuario logeado correctamente"
 
   Scenario: CP02 - Logeo de usuario fallido
     * def data =
     """
     {
-    "email": "hgonzalez@gmail.com",
-    "password": "11223346"
+      "email": "hgonzalez@gmail.com",
+      "password": "11223346"
     }
     """
     And request data
     When method post
     Then status 401
     And match response contains { "message":"Datos incorrectos"}
+    * print "Fallo el logeo de usuario"

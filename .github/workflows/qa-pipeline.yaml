@@ -1,0 +1,14 @@
+name: qa_pipeline
+
+on:
+  workflow_dispatch:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: pruebas inicial
+        run:
+

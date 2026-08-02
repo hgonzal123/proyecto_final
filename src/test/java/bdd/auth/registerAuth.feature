@@ -6,7 +6,7 @@ Feature: Registro de usuarios
     * def data =
     """
     {
-    "email": "hgonzale@gmail.com",
+    "email": "hgonzal96666@gmail.com",
     "password": "11223344",
     "nombre": "Henry Gonzalez QA",
     "tipo_usuario_id": 1,
@@ -16,7 +16,8 @@ Feature: Registro de usuarios
     And request data
     When method post
     Then status 200
-    And match response.data contains { "email":"hgonzale@gmail.com"}
+    And match response.data contains { "email":"hgonzal96666@gmail.com"}
+    * print "Usuario creado exitosamente"
 
   Scenario: CP02 - Registro de usuario con email ya registrado
     * def data =
@@ -32,3 +33,5 @@ Feature: Registro de usuarios
     And request data
     When method post
     Then status 500
+    And match response.email contains ["The email has already been taken."]
+    * print "El usuario ya existe"
