@@ -18,7 +18,7 @@ Feature: Logeo de usuarios
     And match response.user contains { "email":"hgonzalez@gmail.com"}
     * def token = response.access_token
     * print "Usuario logeado correctamente"
-
+  @automation-api
   Scenario: CP02 - Logeo de usuario fallido
     * def data =
     """
