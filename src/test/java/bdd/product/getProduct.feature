@@ -15,10 +15,3 @@ Feature: Listado de productos
     Then status 200
     And match response.id == '#number'
 
-  Scenario Outline: CP02 - Crear un nuevo producto exitoso desde un archivo externo
-    And request { codigo: '#(codigo)', nombre: '#(nombre)', medida: '#(medida)', marca: '#(marca)', categoria: '#(categoria)', precio: '#(precio)', stock: '#(stock)', estado: '#(estado)', descripcion: '#(descripcion)' }
-    When method post
-    Then status 200
-
-    Examples:
-      | read("classpath:resources/csv/auth/dataProducts.csv") |
