@@ -14,4 +14,4 @@ jobs:
 
       - name: Run tests with @automation-api tag
         run: mvn test -Dcucumber.filter.tags="@automation-api"
-        working-directory: ./path/to/your/project
+        working-directory: ./project-folder
