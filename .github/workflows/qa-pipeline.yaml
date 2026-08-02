@@ -10,4 +10,4 @@ jobs:
 
     steps:
       - name: Run tests with @automation-api tag
-        run: echo "Hola"
+        run: mvn clean test -Dkarate.tags=@login
