@@ -1,22 +1,20 @@
 name: qa_pipeline
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
+
 jobs:
   build:
     runs-on: ubuntu-22.04
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Set up JDK
-        uses: actions/setup-java@v3
+      -
+      - name: Instalacion
+        uses: actions/setup-java@v6
         with:
           java-version: '17'
           distribution: 'temurin'
+          cache: maven
 
-      - name: Run tests with @automation-api tag
+      - name: Ejecutar pruebas con tag
         run: mvn clean test -Dkarate.tags=@automation-api
