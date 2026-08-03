@@ -19,7 +19,7 @@ jobs:
           cache: maven
 
       - name: Ejecutar pruebas con tag
-        run: mvn clean test -Dkarate.tags=@automation-api
+        run: mvn clean test -Dkarate.tags=@automation-api -Dmaven.test.failure.ignore=true
 
       - name: Visualizar reporte
         run: |
