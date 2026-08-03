@@ -1,3 +1,4 @@
+@automation-api
 Feature: Logeo de usuarios
   Background:
     Given url "https://api.qateamperu.com/"

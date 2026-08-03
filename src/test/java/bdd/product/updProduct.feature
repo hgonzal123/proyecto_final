@@ -1,3 +1,4 @@
+@automation-api
 Feature: Creacion de productos
 
   Background:
