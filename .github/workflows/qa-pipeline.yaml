@@ -2,7 +2,11 @@ name: qa_pipeline
 
 on:
   workflow_dispatch:
-
+    inputs:
+        tags:
+          description: 'Tags de prueba'
+          required: true
+          default: '@automation-api'
 jobs:
   build:
     runs-on: ubuntu-22.04
@@ -19,13 +23,11 @@ jobs:
           cache: maven
 
       - name: Ejecutar pruebas con tag
-        run: mvn clean test -Dkarate.tags=@automation-api -Dmaven.test.failure.ignore=true
+        run: mvn clean test -Dkarate.tags=${{ inputs.tags }}
 
-      - name: Visualizar reporte
-        run: |
-          cd target
-          if [ -d "karate-reports" ]; then
-            echo "Reporte generado en target/karate-reports/karate-summary.html"
-          else
-            echo "No se generó el reporte de Karate"
-          fi
+      - name: Visualizar reporte de Karate
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: karate-reports
+          path: target/karate-reports/
