@@ -12,6 +12,8 @@ Feature: Registro de usuarios
     When method post
     Then status 200
     And match response.data contains { "email":"#(emailAleatorio)"}
+    And match response.token_type == 'Bearer'
+    And match response.data.estado == '#number'
     * print "Se creo el usuario con email: ",emailAleatorio," exitosamente"
 
   Scenario: CP02 - Registro de usuario con email ya registrado

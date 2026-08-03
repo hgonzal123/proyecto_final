@@ -17,6 +17,8 @@ Feature: Logeo de usuarios
     When method post
     Then status 200
     And match response.user contains { "email":"hgonzalez@gmail.com"}
+    And match response.token_type == 'Bearer'
+    And match response.user.estado == '#number'
     * def token = response.access_token
     * print "Usuario logeado correctamente"
   @automation-api
