@@ -6,10 +6,12 @@ Feature: Registro de usuarios
     And header Accept = "application/json"
     And header Content-Type = "application/json"
   Scenario: CP01 - Registro de usuario exitoso
+    * def idAleatorio = Math.floor(Math.random() * 1000)
+    * def emailAleatorio = "hgonzal" + idAleatorio + "@gmail.com"
     * def data =
     """
     {
-    "email": "hgonzal006232@gmail.com",
+    "email": "#(email)",
     "password": "11223344",
     "nombre": "Henry Gonzalez QA",
     "tipo_usuario_id": 1,
@@ -19,8 +21,8 @@ Feature: Registro de usuarios
     And request data
     When method post
     Then status 200
-    And match response.data contains { "email":"hgonzal006232@gmail.com"}
-    * print "Usuario creado exitosamente"
+    And match response.data contains { "email":"#(email)"}
+    * print "Se creo el usuario con email: ",emailAleatorio," exitosamente"
 
   Scenario: CP02 - Registro de usuario con email ya registrado
     * def data =
