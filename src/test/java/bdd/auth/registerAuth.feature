@@ -9,7 +9,6 @@ Feature: Registro de usuarios
     * def idAleatorio = Math.floor(Math.random() * 1000)
     * def emailAleatorio = "hgonzal" + idAleatorio + "@gmail.com"
     * def data = { "email": "#(emailAleatorio)",    "password": "11223344",    "nombre": "Henry Gonzalez QA",    "tipo_usuario_id": 1,    "estado": 1    }
-
     And request data
     When method post
     Then status 200

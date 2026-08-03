@@ -10,10 +10,14 @@ Feature: Creacion de productos
         And header Authorization = tokenAuth
 
     Scenario: CP01 - Crear un nuevo producto exitoso
+        * def letraAleatoria1 = String.fromCharCode(Math.floor(Math.random() * 26) + 65)
+        * def letraAleatoria2 = String.fromCharCode(Math.floor(Math.random() * 26) + 65)
+        * def numeroAleatorio = Math.floor(Math.random() * 10000)
+        * def codigoAleatorio = letraAleatoria1 + letraAleatoria2 + numeroAleatorio
         * def data =
         """
         {
-            "codigo": "ZZ1983",
+            "codigo": "#(codigoAleatorio)",
             "nombre": "Laptop Asus",
             "medida": "UND ",
             "marca": "Generico",
@@ -33,7 +37,11 @@ Feature: Creacion de productos
 
 
     Scenario Outline: CP02 - Crear un nuevo producto exitoso desde un archivo externo <codigo> - <nombre>
-        And request { codigo: '#(codigo)', nombre: '#(nombre)', medida: '#(medida)', marca: '#(marca)', categoria: '#(categoria)', precio: '#(precio)', stock: '#(stock)', estado: '#(estado)', descripcion: '#(descripcion)' }
+        * def letraAleatoria1 = String.fromCharCode(Math.floor(Math.random() * 26) + 65)
+        * def letraAleatoria2 = String.fromCharCode(Math.floor(Math.random() * 26) + 65)
+        * def numeroAleatorio = Math.floor(Math.random() * 10000)
+        * def codigoAleatorio = letraAleatoria1 + letraAleatoria2 + numeroAleatorio
+        And request { codigo: '#(codigoAleatorio)', nombre: '#(nombre)', medida: '#(medida)', marca: '#(marca)', categoria: '#(categoria)', precio: '#(precio)', stock: '#(stock)', estado: '#(estado)', descripcion: '#(descripcion)' }
         When method post
         Then status 200
         And match response.id == '#number'
