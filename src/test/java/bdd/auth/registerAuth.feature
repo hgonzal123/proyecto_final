@@ -3,8 +3,8 @@ Feature: Registro de usuarios
   Background:
     Given url "https://api.qateamperu.com/"
     And path "/api/register"
-    And header Accept = "application/json"
     And header Content-Type = "application/json"
+    And header Accept = "application/json"
   Scenario: CP01 - Registro de usuario exitoso
     * def idAleatorio = Math.floor(Math.random() * 1000)
     * def emailAleatorio = "hgonzal" + idAleatorio + "@gmail.com"
