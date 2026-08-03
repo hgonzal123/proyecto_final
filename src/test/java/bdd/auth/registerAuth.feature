@@ -8,20 +8,12 @@ Feature: Registro de usuarios
   Scenario: CP01 - Registro de usuario exitoso
     * def idAleatorio = Math.floor(Math.random() * 1000)
     * def emailAleatorio = "hgonzal" + idAleatorio + "@gmail.com"
-    * def data =
-    """
-    {
-    "email": "#(email)",
-    "password": "11223344",
-    "nombre": "Henry Gonzalez QA",
-    "tipo_usuario_id": 1,
-    "estado": 1
-    }
-    """
+    * def data = { "email": "#(emailAleatorio)",    "password": "11223344",    "nombre": "Henry Gonzalez QA",    "tipo_usuario_id": 1,    "estado": 1    }
+
     And request data
     When method post
     Then status 200
-    And match response.data contains { "email":"#(email)"}
+    And match response.data contains { "email":"#(emailAleatorio)"}
     * print "Se creo el usuario con email: ",emailAleatorio," exitosamente"
 
   Scenario: CP02 - Registro de usuario con email ya registrado
