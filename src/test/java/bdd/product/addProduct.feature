@@ -13,7 +13,7 @@ Feature: Creacion de productos
         * def data =
         """
         {
-            "codigo": "HM1983",
+            "codigo": "ZZ1983",
             "nombre": "Laptop Asus",
             "medida": "UND ",
             "marca": "Generico",
