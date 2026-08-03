@@ -1,4 +1,4 @@
-@automation-api
+
 Feature: Listado de productos
 
   Background:
@@ -9,7 +9,7 @@ Feature: Listado de productos
     * def token = apilogin.token
     * def tokenAuth = 'Bearer ' + token
     And header Authorization = tokenAuth
-  @automation-api
+
   Scenario: CP01 - Listar producto existente
     When method get
     Then status 200
